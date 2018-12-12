@@ -191,7 +191,7 @@ void SSTree::insert(float date[dimensions]){
  		elemento->insertDate(date);
  		chooseLeaf(elemento,p);
 
- 		if(!p){//LA PRIMERA VEZ NO HAY NADA
+ 		if(!p){
  			root=new SSNode(MAXDatos);
  			root->Entry[root->m_count]=elemento;
  			root->m_count+=1;
@@ -201,20 +201,20 @@ void SSTree::insert(float date[dimensions]){
  			root->height=1;
  			root->total_children=1;
  		}
- 		else if(p->m_count<MAXDatos)//CUANDO ES MENOR hay espacio 
+ 		else if(p->m_count<MAXDatos)
  		{
  			p->Entry[p->m_count]=elemento;
  			p->m_count+=1;
  			p->centroid=calcularCentroide(p);
  			p->Radius=calcularRadio(p);
  		}
- 		else//esta lleno el nodo
+ 		else
  		{
            p->m_level+=1;
            p->m_count+=1;
 
            split(p->Entry,elemento,p);
-           //cout<<" p_m_count"<<p->m_level<<endl;
+           
    
 
  		}
